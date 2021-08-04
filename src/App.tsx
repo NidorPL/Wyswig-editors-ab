@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import 'froala-editor/css/froala_style.min.css';
@@ -12,19 +12,8 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
+import { Editor as TinyEditor } from '@tinymce/tinymce-react';
 
-const Tiptap = () => {
-    const editor = useEditor({
-        extensions: [
-            StarterKit,
-        ],
-        content: '<p>Hello World! 🌎️</p>',
-    })
-
-    return (
-        <EditorContent editor={editor} />
-    )
-}
 
 function App() {
     const [value, setValue] = useState('');
@@ -44,6 +33,15 @@ function App() {
             'list', 'bullet', 'indent',
             'link', 'image'
         ]
+
+    // For tiny
+
+    const editorRef = useRef(null);
+    const log = () => {
+        if (editorRef.current) {
+        }
+    };
+
 
     return (
     <div className="App">
@@ -75,6 +73,29 @@ function App() {
                 <Typography.Title level={3} >Quill Editor</Typography.Title>
                 <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules}
                             formats={formats}/>
+
+
+            </Col>
+        </Row>
+        <Row>
+            <Col span={15}>
+                <Typography.Title level={3} >Tiny Editor</Typography.Title>
+                <TinyEditor
+                             initialValue="<p>This is the initial content of the editor.</p>"
+                             init={{
+                                 height: 500,
+                                 menubar: false,
+                                 plugins: [
+                                     'advlist autolink lists link image charmap print preview anchor',
+                                     'searchreplace visualblocks code fullscreen',
+                                     'insertdatetime media table paste code help wordcount'
+                                 ],
+                                 toolbar: 'undo redo | formatselect | ' +
+                                     'bold italic backcolor | alignleft aligncenter ' +
+                                     'alignright alignjustify | bullist numlist outdent indent | ' +
+                                     'removeformat | help',
+                                 content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                             }}/>
 
 
             </Col>
