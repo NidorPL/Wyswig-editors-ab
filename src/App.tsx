@@ -13,6 +13,9 @@ import StarterKit from '@tiptap/starter-kit'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import { Editor as TinyEditor } from '@tinymce/tinymce-react';
+import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
+
 
 
 function App() {
@@ -97,6 +100,13 @@ function App() {
                                  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                              }}/>
 
+
+            </Col>
+        </Row>
+        <Row>
+            <Col span={15}>
+                <Typography.Title level={3} >Sun Editor</Typography.Title>
+                <SunEditor />
 
             </Col>
         </Row>
