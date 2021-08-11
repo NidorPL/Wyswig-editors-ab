@@ -78,17 +78,19 @@ function App() {
           </Col>
       </Row>
         <Row>
-            <Col span={15}>
+            <Col span={12}>
                 <Typography.Title level={3} >Quill Editor</Typography.Title>
                 Very nice, but is unmaintained for 18 months. Without updates it will break with React 18
                 <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules}
                             formats={formats}/>
-
-
+            </Col>
+            <Col span={12}>
+                <Typography.Title level={5} >Quill Output format:</Typography.Title>
+                <Input.TextArea rows={6} value={value}/>
             </Col>
         </Row>
         <Row>
-            <Col span={15}>
+            <Col span={12}>
                 <Typography.Title level={3} >Tiny Editor</Typography.Title>
                 Need to check if we want to buy the licence.
 
@@ -116,13 +118,10 @@ function App() {
                                  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
 
                              }}/>
-
+            </Col>
+            <Col span={12}>
                 <Typography.Title level={5} >Tiny Output format:</Typography.Title>
                 <Input.TextArea rows={6} value={tinyValue}/>
-
-
-
-
             </Col>
         </Row>
         <Row>
