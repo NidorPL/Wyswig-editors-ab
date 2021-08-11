@@ -7,7 +7,7 @@ import FroalaEditorComponent from 'react-froala-wysiwyg';
 import './App.css';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Editor } from "react-draft-wysiwyg";
-import {Row, Col, Typography} from "antd"
+import {Row, Col, Typography, Input} from "antd"
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import ReactQuill from 'react-quill';
@@ -21,6 +21,9 @@ import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 
 function App() {
     const [value, setValue] = useState('');
+    const [tinyValue, setTinyValue] = useState('');
+
+
 
     const modules = {
             toolbar: [
@@ -93,6 +96,11 @@ function App() {
 
                 <TinyEditor
                              initialValue="<p>This is the initial content of the editor.</p>"
+                             onEditorChange={(data) => {
+                                 console.log("stuff changed")
+                                 console.log(data);
+                                 setTinyValue(data)
+                             }}
                              init={{
                                  height: 500,
                                  menubar: false,
@@ -106,7 +114,13 @@ function App() {
                                      'alignright alignjustify | bullist numlist outdent indent | ' +
                                      'removeformat | help',
                                  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+
                              }}/>
+
+                <Typography.Title level={5} >Tiny Output format:</Typography.Title>
+                <Input.TextArea rows={6} value={tinyValue}/>
+
+
 
 
             </Col>
