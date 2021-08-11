@@ -14,6 +14,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import { Editor as TinyEditor } from '@tinymce/tinymce-react';
 import SunEditor from 'suneditor-react';
+
 import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 
 
@@ -54,6 +55,8 @@ function App() {
 
           <Col span={15}>
               <Typography.Title level={3} >Old one (react-draft-wysiwyg)</Typography.Title>
+              Non deterministically saves the rich text and also adds weird stuff to it. Not really reliable
+
               <Editor
                   toolbarClassName="toolbarClassName"
                   wrapperClassName="wrapperClassName"
@@ -74,6 +77,7 @@ function App() {
         <Row>
             <Col span={15}>
                 <Typography.Title level={3} >Quill Editor</Typography.Title>
+                Very nice, but is unmaintained for 18 months. Without updates it will break with React 18
                 <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules}
                             formats={formats}/>
 
@@ -83,6 +87,10 @@ function App() {
         <Row>
             <Col span={15}>
                 <Typography.Title level={3} >Tiny Editor</Typography.Title>
+                Need to check if we want to buy the licence.
+
+                Looks good in general
+
                 <TinyEditor
                              initialValue="<p>This is the initial content of the editor.</p>"
                              init={{
@@ -106,7 +114,15 @@ function App() {
         <Row>
             <Col span={15}>
                 <Typography.Title level={3} >Sun Editor</Typography.Title>
+                It basically works, but the documentation is in http and it looks like from the 90s
                 <SunEditor />
+
+            </Col>
+        </Row>
+        <Row>
+            <Col span={15}>
+                <Typography.Title level={3} >X Editor</Typography.Title>
+
 
             </Col>
         </Row>
